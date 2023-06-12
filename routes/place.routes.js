@@ -14,7 +14,7 @@ router.get("/places", (req, res, next) => {
       const data = {
         places: placesFromDb,
       };
-      res.render("places/places-list", data);
+      res.render("places/place-list", data);
     })
     .catch((err) => {
       console.log("error getting list of places from DB", err);
@@ -24,56 +24,53 @@ router.get("/places", (req, res, next) => {
 
 //CREATE: display form
 router.get("/places/create", isLoggedIn, (req, res, next) => {
-  res.render("places/place-create").catch((err) => {
-    console.log("error displaying create form", err);
-  });
+  res.render("places/place-create")
 });
 //CREATE: process form
-router.post("/places/create"),
-  isLoggedIn,
-  (req, res, next) => {
+router.post("/places/create",isLoggedIn,(req, res, next) => {
     const newPlace = {
       title: req.body.title,
       description: req.body.description,
       address: req.body.address,
       review: req.body.review,
-    };
+    }
     Place.create(newPlace)
       .then((newPlace) => {
         res.redirect("/places");
-      })
+    })
       .catch((err) => {
         console.log("error creating new place", err);
         next(err);
       });
-  };
+  });
 
   //UPDATE: display form
-  router.get("places/:placeId/edit", isLoggedIn, async (req, res , next) =>{
+  router.get("/places/:placeId/edit", isLoggedIn, async (req, res , next) =>{
     const {placeId} = req.params;
 
     try{
         const placeDetails = await Place.findById(placeId)
     
-    res.render("places/place-edit.hbs", {place: placeDetails})
-    } catch(err) {
+    res.render("places/place-edit", {place: placeDetails})
+    } catch(err){
         next(err)
     }
 })
 
 //UPDATE: process form
-router.post("/places/place-edit.hbs", isLoggedIn, (req, res, next) =>{
-    const {placeId} = req.params;
-    const {title, description, address, review} = req.body;
+router.post("/places/:placeId/edit", isLoggedIn, (req, res, next) => {
+  const { placeId } = req.params;
+  const { title, description, address, review } = req.body;
 
-    Place.findByIdAndUpdate(
-        placeId,
-        {title, description, address, review},
-        {new: true}
-    )
-    .then((updatedPlace)=> res.redirect(`/places/${updatedPlace.id}`))
-    .catch((err)=> next(err));
-})
+  Place.findByIdAndUpdate(
+    placeId,
+    { title, description, address, review },
+    { new: true }
+  )
+    .then((updatedPlace) => res.redirect(`/places/${updatedPlace.id}`)) // go to the details page to see the updates
+    .catch((error) => next(error));
+});
+
 
 //DELETE: delete place
 router.post("/places/:placeId/delete", (req, res, next) => {
@@ -86,7 +83,7 @@ router.post("/places/:placeId/delete", (req, res, next) => {
 
 //READ: display details of one place
 router.get("/places/:placeId", (req, res , next) => {
-    const id = req.params.bookId;
+    const id = req.params.placeId;
 
     Place.findById(id)
     .then((placesFromDb) =>{
