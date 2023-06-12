@@ -1,0 +1,23 @@
+<h2>Create a book</h2>
+
+<form method="POST" action="/places/create">
+  <label>
+    Title:
+    <input type="text" name="title" />
+  </label>
+  <label>
+    Address:
+    <input type="text" name="address" />
+  </label>
+  <label>
+    Description:
+    <textarea name="description" cols="30" rows="4"> </textarea>
+  </label>
+
+  <label>
+    Review:
+    <input type="number" name="review" min="1" max="5" />
+  </label>
+
+  <button type="submit"> Create </button>
+</form>
