@@ -15,7 +15,24 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
 
   </head>
- {{>header}}
+ 
+   <div class="d-flex flex-row-reverse bd-highlight">     
+
+        <form id="logout-form" method="POST" action="/logout">
+          <button class="btn btn-danger">Logout</button>
+        </form>
+
+        <form id="login-form" method="POST" action="/login">
+          <button class="btn btn-primary">Login</button>
+        </form>
+
+        <form id="signup-form" method="POST" action="/signup">
+          <button class="btn btn-primary">Sign Up</button>
+        </form>
+
+        </div>
+
+ {{>header}} 
 {{!-- {{currentUser.email}} --}}
   <body>
 <section class="main">
@@ -79,9 +96,7 @@
     ></script>
   </body> --}}
 
-    <form id="logout-form" method="POST" action="/logout">
-          <button class="btn btn-danger">Logout</button>
-        </form>
+    
 
 
 </body>
