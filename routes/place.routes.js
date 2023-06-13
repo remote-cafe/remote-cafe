@@ -73,7 +73,7 @@ router.post("/places/:placeId/edit", isLoggedIn, (req, res, next) => {
 
 
 //DELETE: delete place
-router.post("/places/:placeId/delete", (req, res, next) => {
+router.post("/places/:placeId/delete", isLoggedIn, (req, res, next) => {
     const {placeId} = req.params
 
     Place.findByIdAndDelete(placeId)

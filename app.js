@@ -15,6 +15,11 @@ const hbs = require("hbs");
 
 const app = express();
 
+hbs.registerPartials(__dirname + "/views/partials"); //tell HBS which directory we use for partials
+
+app.set("views", __dirname + "/views"); //tells our Express app where to look for our views
+app.set("view engine", "hbs"); //sets HBS as the template engine
+
 // ℹ️ This function is getting exported from the config folder. It runs most pieces of middleware
 require("./config")(app);
 
@@ -22,6 +27,10 @@ const capitalize = require("./utils/capitalize");
 const projectName = "remote-cc";
 
 app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
+app.use((req, res, next)=>{
+    app.locals.currentUser = req.session.currentUser
+    next()
+})
 
 // 👇 Start handling routes here
 
