@@ -15,13 +15,13 @@ router.get("/signup", (req, res, next) => {
 
 //POST /signup
 router.post("/signup", (req, res, next) => {
-  const {firstName,surname, email, password } = req.body;
+  const { firstName, surname, email, password } = req.body;
 
   // make sure users fill all mandatory fields:
   if (!firstName || !surname || !email || !password) {
     res.render("auth/signup", {
       errorMessage:
-        "All fields are mandatory. Please provide your email and password.",
+        "All fields are mandatory. Please provide fill all information.",
     });
     return; // finish execution of the current function
   }
@@ -31,7 +31,7 @@ router.post("/signup", (req, res, next) => {
   if (!regex.test(password)) {
     res.status(400).render("auth/signup", {
       errorMessage:
-        "Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.",
+        "Password needs to have at least 6 characters and must contain at least one number, one lowercase and one uppercase letter.",
     });
     return;
   }
@@ -43,8 +43,8 @@ router.post("/signup", (req, res, next) => {
     })
     .then((hash) => {
       const newUser = {
-        firstName: text,
-        surname: text,
+        firstName: firstName,
+        surname: surname,
         email: email,
         passwordHash: hash,
       };
