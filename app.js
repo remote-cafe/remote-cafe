@@ -15,6 +15,8 @@ const hbs = require("hbs");
 
 const app = express();
 
+
+
 hbs.registerPartials(__dirname + "/views/partials"); //tell HBS which directory we use for partials
 
 app.set("views", __dirname + "/views"); //tells our Express app where to look for our views

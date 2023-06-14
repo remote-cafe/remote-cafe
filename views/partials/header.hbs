@@ -35,19 +35,20 @@
           </ul>
         </div>
       </div>
+      {{#if currentUser}}
           <div class="d-flex flex-row-reverse bd-highlight">  
             <form id="logout-form" method="POST" action="/logout">
               <button class="btn btn-danger">Logout</button>
             </form>
-
+        {{else}}
             <form id="login-form" method="POST" action="/login">
               <button class="btn btn-primary">Login</button>
             </form>
-
             <form id="signup-form" method="POST" action="/signup">
               <button class="btn btn-primary">Sign Up</button>
             </form>
-
+        {{/if}}     
+            
         </div>
     </nav>
 

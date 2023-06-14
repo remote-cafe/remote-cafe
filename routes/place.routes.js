@@ -24,7 +24,7 @@ router.get("/places", (req, res, next) => {
 
 //CREATE: display form
 router.get("/places/create", isLoggedIn, (req, res, next) => {
-  res.render("places/place-create")
+  res.render("places/place-create", { userDetails: req.session.currentUser })
 });
 //CREATE: process form
 router.post("/places/create",isLoggedIn,(req, res, next) => {
