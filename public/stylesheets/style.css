@@ -7,12 +7,11 @@
   opacity: 0.8;
 }
 
-a{
+a {
   color: #262626;
   text-decoration: none;
-  font-family:serif;
+  font-family: serif;
 }
-
 
 .navbar-brand {
   font-weight: bold;
@@ -76,13 +75,13 @@ h1 {
 
 .reader {
   background-color: #333;
-  opacity: 0.8;
+  opacity: 0.3;
 }
 
 label {
   color: darkgray;
 }
 
-.container{
-  margin-right: 50%;
+.container2 {
+  inline-size: 35%;
 }
