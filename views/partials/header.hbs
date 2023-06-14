@@ -36,17 +36,23 @@
         </div>
       </div>
       {{#if currentUser}}
-          <div class="d-flex flex-row-reverse bd-highlight">  
+      
             <form id="logout-form" method="POST" action="/logout">
               <button class="btn btn-danger">Logout</button>
             </form>
         {{else}}
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+          <div class="btn-group mr-2 mx-2" role="group" aria-label="First group">
             <form id="login-form" method="POST" action="/login">
-              <button class="btn btn-primary">Login</button>
+              <button class="btn btn-light">Login</button>
             </form>
+          </div>
+          <div class="btn-group mr-2 mx-2" role="group" aria-label="Second group"></div>
             <form id="signup-form" method="POST" action="/signup">
-              <button class="btn btn-primary">Sign Up</button>
+              <button class="btn btn-light">Sign Up</button>
             </form>
+        </div>
+          </div>
         {{/if}}     
             
         </div>

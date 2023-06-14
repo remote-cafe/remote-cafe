@@ -11,9 +11,11 @@ const placeSchema = new Schema(
       type: String,
       required: true,
     },
-    address: {
-      type: String,
-      required: true,
+    address:{
+      country: String,
+      city: String,
+      street: String,
+      postalCode: String,
     },
     review: {
       type: Number,

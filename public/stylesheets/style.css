@@ -3,8 +3,16 @@
 }
 
 .container-fluid {
-  background-color: beige;
+  background-color: gainsboro;
+  opacity: 0.8;
 }
+
+a{
+  color: #262626;
+  text-decoration: none;
+  font-family:serif;
+}
+
 
 .navbar-brand {
   font-weight: bold;
@@ -33,7 +41,7 @@
 
 .main {
   position: relative;
-  background-image: url(/images/cafe.jpg);
+  background-image: url(/images/liana-mikah.jpg);
   min-height: 100vh;
   background-size: cover;
   background-position: center;
@@ -75,6 +83,6 @@ label {
   color: darkgray;
 }
 
-.d-flex {
-  background-color: beige;
+.container{
+  margin-right: 50%;
 }
