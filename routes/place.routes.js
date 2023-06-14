@@ -24,38 +24,38 @@ router.get("/places", (req, res, next) => {
 
 //CREATE: display form
 router.get("/places/create", isLoggedIn, (req, res, next) => {
-  res.render("places/place-create", { userDetails: req.session.currentUser })
+  res.render("places/place-create", { userDetails: req.session.currentUser });
 });
 //CREATE: process form
-router.post("/places/create",isLoggedIn,(req, res, next) => {
-    const newPlace = {
-      title: req.body.title,
-      description: req.body.description,
-      address: req.body.address,
-      review: req.body.review,
-    }
-    Place.create(newPlace)
-      .then((newPlace) => {
-        res.redirect("/places");
+router.post("/places/create", isLoggedIn, (req, res, next) => {
+  const newPlace = {
+    title: req.body.title,
+    description: req.body.description,
+    address: req.body.address,
+    review: req.body.review,
+  };
+  Place.create(newPlace)
+    .then((newPlace) => {
+      res.redirect("/places");
     })
-      .catch((err) => {
-        console.log("error creating new place", err);
-        next(err);
-      });
-  });
+    .catch((err) => {
+      console.log("error creating new place", err);
+      next(err);
+    });
+});
 
-  //UPDATE: display form
-  router.get("/places/:placeId/edit", isLoggedIn, async (req, res , next) =>{
-    const {placeId} = req.params;
+//UPDATE: display form
+router.get("/places/:placeId/edit", isLoggedIn, async (req, res, next) => {
+  const { placeId } = req.params;
 
-    try{
-        const placeDetails = await Place.findById(placeId)
-    
-    res.render("places/place-edit", {place: placeDetails})
-    } catch(err){
-        next(err)
-    }
-})
+  try {
+    const placeDetails = await Place.findById(placeId);
+
+    res.render("places/place-edit", { place: placeDetails });
+  } catch (err) {
+    next(err);
+  }
+});
 
 //UPDATE: process form
 router.post("/places/:placeId/edit", isLoggedIn, (req, res, next) => {
@@ -71,27 +71,26 @@ router.post("/places/:placeId/edit", isLoggedIn, (req, res, next) => {
     .catch((error) => next(error));
 });
 
-
 //DELETE: delete place
 router.post("/places/:placeId/delete", isLoggedIn, (req, res, next) => {
-    const {placeId} = req.params
+  const { placeId } = req.params;
 
-    Place.findByIdAndDelete(placeId)
+  Place.findByIdAndDelete(placeId)
     .then(() => res.redirect("/places"))
-    .catch((err) => next(err))
+    .catch((err) => next(err));
 });
 
 //READ: display details of one place
-router.get("/places/:placeId", (req, res , next) => {
-    const id = req.params.placeId;
+router.get("/places/:placeId", (req, res, next) => {
+  const id = req.params.placeId;
 
-    Place.findById(id)
-    .then((placesFromDb) =>{
-        res.render("places/place-details", placesFromDb);
+  Place.findById(id)
+    .then((placesFromDb) => {
+      res.render("places/place-details", placesFromDb);
     })
     .catch((err) => {
-        console.log("error getting place details from DB", err);
-    })
-})
+      console.log("error getting place details from DB", err);
+    });
+});
 
 module.exports = router;
