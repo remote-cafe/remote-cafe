@@ -165,3 +165,9 @@ body{
     font-weight: bold;
     color: #262626;
   }
+ .img-fluid{
+  inline-size: 40%;
+  opacity: 1;
+  margin-right: 6%;
+  margin-top: 5%;
+ }

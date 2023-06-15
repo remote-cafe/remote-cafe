@@ -1,35 +1,40 @@
-<h2>Edit the place: {{place.title}}</h2>
+<h2>Edit the place: {{place.name}}</h2>
 
 <form action="/places/{{place._id}}/edit" method="post">
-  <label>
-    Title:
-    <input type="text" name="title" value="{{place.title}}" />
-  </label>
+  <div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">Name</span>
+  <input name="name" value="{{place.name}}" type="text" class="form-control" placeholder="Enter the name of the establishment" aria-label="name" aria-describedby="basic-addon1">
+</div>
 
-  <label>
-    Address:
-    <input type="text" name="address" value="{{place.address}}" />
-  </label>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">Country</span>
+  <input type="text" name="country" value="{{place.address.country}}" class="form-control" placeholder="Enter the country" aria-label="country" aria-describedby="basic-addon1">
+</div>
 
-  <label>
-    Description:
-    <textarea
-      name="description"
-      cols="30"
-      rows="4"
-    >{{place.description}}</textarea>
-  </label>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">City</span>
+  <input type="text" name="city" value="{{place.address.city}}" class="form-control" placeholder="Enter the city" aria-label="city" aria-describedby="basic-addon1">
+</div>
 
-  <label>
-    Review:
-    <input
-      type="number"
-      name="review"
-      min="1"
-      max="5"
-      value="{{place.review}}"
-    />
-  </label>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">Street</span>
+  <input type="text" name="street" value="{{place.address.street}}" class="form-control" placeholder="Enter the street name and the number" aria-label="street" aria-describedby="basic-addon1">
+</div>
 
-  <button>Save changes</button>
+<br>
+
+ <div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">Score</span>
+  <input type="number" name="score" value="{{place.review.score}}" class="form-control" placeholder="1 to 5" aria-label="score" aria-describedby="basic-addon1">
+</div>
+ 
+  <div class="input-group">
+  <span class="input-group-text">Comments</span>
+  <textarea class="form-control" name="comment" aria-label="comment"></textarea>
+</div>
+
+<br>
+ 
+  <button class="btn btn-light float-end" type="submit"> Save changes </button>
 </form>
+</section>

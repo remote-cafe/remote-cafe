@@ -4,6 +4,7 @@ const mongoose = require("mongoose")
 const Place = require("../models/Place.model");
 
 const isLoggedIn = require("../middleware/isLoggedIn");
+const isLoggedOut = require("../middleware/isLoggedOut")
 const async = require("hbs/lib/async");
 
 // READ: display all places
@@ -24,7 +25,11 @@ router.get("/places", (req, res, next) => {
 
 //CREATE: display form
 router.get("/places/create", isLoggedIn, (req, res, next) => {
-  res.render("places/place-create", { userDetails: req.session.currentUser });
+  if(req.session.currentUser){
+    res.render("places/place-create", { userDetails: req.session.currentUser });
+  } else {
+    res.render("/login");
+  }
 });
 //CREATE: process form
 router.post("/places/create", isLoggedIn, (req, res, next) => {
@@ -68,7 +73,7 @@ router.get("/places/:placeId/edit", isLoggedIn, async (req, res, next) => {
 });
 
 //UPDATE: process form
-router.post("/places/:placeId/edit", isLoggedIn, (req, res, next) => {
+router.post("/places/:id/edit", isLoggedIn, (req, res, next) => {
   const { placeId } = req.params;
   const { title, description, address, review } = req.body;
 
