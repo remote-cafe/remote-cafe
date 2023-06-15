@@ -1,17 +1,18 @@
-<h1>{{title}}</h1>
+<h1>{{place.title}}</h1>
 
-<hr />
+<section class="details-section">
+<p class="fs-5"> <u>Country:</u> {{place.address.country}}</p>
+<p class="fs-5"> <u>City:</u> {{place.address.city}}:</p>
+<p class="fs-5"> <u>Street:</u> {{place.address.street}}</p>
+<p class="fs-5"> <u>Score:</u> {{place.review.score}}</p>
+<p class="fs-5"> <u>Comments:</u> <br> {{place.review.comment}}</p>
+<a class="btn btn-light btn-sm" href="/places">Back</a>
+</section>
 
-<h3>Address:</h3>
-<p>{{address}}</p>
-
-<h3>Description:</h3>
-<p>{{description}}</p>
-
-<h3>Review:</h3>
-<p>{{review}}</p>
-
-
-<hr />
-
-<a href="/places">Back</a>
+{{#if (isOwner user._id place.creator)}}
+<div class="btn-group mr-2 mx-2" role="group" aria-label="Third group"></div>
+<a class="btn btn-light btn-sm" href="/places/{{_id}}/edit">Edit</a>
+<form action="/places/{{_id}}/delete" method="POST">
+    <button class="btn btn-light btn-sm">Delete</button>
+</form>
+{{/if}}

@@ -52,6 +52,7 @@ router.post("/signup", (req, res, next) => {
       return User.create(newUser);
     })
     .then((userFromDB) => {
+      req.session.currentUser = userFromDB;
       res.redirect("/user-profile"); // user has been created, redirect to user profile
     })
     .catch((error) => {

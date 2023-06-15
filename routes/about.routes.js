@@ -4,9 +4,7 @@ const router = express.Router();
 //about
 
 router.get("/about", (req, res, next) => {
-  res.render("about").catch(err);
-  console.log("error getting this page", err);
-  next(err);
+  res.render("about")
 });
 
 module.exports = router;

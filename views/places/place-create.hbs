@@ -1,23 +1,40 @@
-<h2>Create a place</h2>
-
+<section class="create-form">
 <form method="POST" action="/places/create">
-  <label>
-    Title:
-    <input type="text" name="title" />
-  </label>
-  <label>
-    Address:
-    <input type="text" name="address" />
-  </label>
-  <label>
-    Description:
-    <textarea name="description" cols="30" rows="4"> </textarea>
-  </label>
 
-  <label>
-    Review:
-    <input type="number" name="review" min="1" max="5" />
-  </label>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">Name</span>
+  <input name="name" type="text" class="form-control" placeholder="Enter the name of the establishment" aria-label="name" aria-describedby="basic-addon1">
+</div>
 
-  <button type="submit"> Create </button>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">Country</span>
+  <input type="text" name="country" class="form-control" placeholder="Enter the country" aria-label="country" aria-describedby="basic-addon1">
+</div>
+
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">City</span>
+  <input type="text" name="city" class="form-control" placeholder="Enter the city" aria-label="city" aria-describedby="basic-addon1">
+</div>
+
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">Street</span>
+  <input type="text" name="street" class="form-control" placeholder="Enter the street name and the number" aria-label="street" aria-describedby="basic-addon1">
+</div>
+
+<br>
+
+ <div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">Score</span>
+  <input type="number" name="score" class="form-control" placeholder="1 to 5" aria-label="score" aria-describedby="basic-addon1">
+</div>
+ 
+  <div class="input-group">
+  <span class="input-group-text">Comments</span>
+  <textarea class="form-control" name="comment" "Has plugs? How is the internet connection? It's a quite place? Has seats?"  aria-label="comment"></textarea>
+</div>
+
+<br>
+ 
+  <button class="btn btn-light float-end" type="submit"> Create </button>
 </form>
+</section>

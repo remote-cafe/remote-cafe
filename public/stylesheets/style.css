@@ -42,20 +42,38 @@ a {
 }
 
 .main {
-  position: relative;
+  /* position: relative; */
   background-image: url(/images/liana-mikah.jpg);
   min-height: 100vh;
   background-size: cover;
   background-position: center;
-  padding: 280px 0 220px;
+  /* padding: 280px 0 220px; */
 }
-.main h2,
+.main h4,
 h1 {
-  font-size: 2.6em;
-  color: darkgrey;
+  font-size: 1.5em;
+  color: white;
   text-transform: uppercase;
   font-weight: bold;
 }
+h3{
+  font-size: 1.0em;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+h6{
+  font-size: 0.8em;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+/* h5{
+  color: white;
+  font-weight: bold;
+} */
+
+
 .main p {
   margin-top: 1em;
   padding: 0;
@@ -67,7 +85,7 @@ h1 {
 }
 
 .main .readmore {
-  background: #fff;
+  background: #ccc;
   border-radius: 5px;
   padding: 10px 20px;
   text-decoration: none;
@@ -81,17 +99,69 @@ h1 {
 .reader {
   background-color: #333;
   opacity: 0.5;
+  inline-size: 50%;
 }
 
 label {
   color: darkgray;
 }
 
-.container.md {
+/* .container {
   inline-size: 50%;
   justify-content: left;
-}
+} */
 
 .about-text {
+  margin-left: 0 0 0;
+  padding: 0 0 10;
+  text-align: left;
   color: white;
+  font-size: 1em;
 }
+
+.create-form{
+  margin-top: 10%
+}
+
+.details-section{
+  margin-bottom: 30%;
+  text-align:justify;
+}
+
+/* .place-summary{
+  color: aqua;
+  inline-size: 30%;
+} */
+
+body{
+  margin-top:20px;
+  background:#eee;
+  }
+  .card {
+      box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+  }
+  .avatar.sm {
+      width: 2.25rem;
+      height: 2.25rem;
+      font-size: .818125rem;
+  }
+  .table-nowrap .table td, .table-nowrap .table th {
+      white-space: nowrap;
+  }
+  .table>:not(caption)>*>* {
+      padding: 0.75rem 1.25rem;
+      border-bottom-width: 1px;
+  }
+  table th {
+      font-weight: 600;
+      background-color: #ccc !important;
+  }
+  .intro-text{
+    margin-top: 20%;
+    color: white;
+  }
+  .input-group-text{
+    background-color: #ccc !important;
+    font-weight: bold;
+    color: #262626;
+  }

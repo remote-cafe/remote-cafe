@@ -28,6 +28,11 @@ const projectName = "remote-cc";
 
 app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 
+hbs.registerHelper("isOwner", (userId, placeCreator) =>{
+  console.log(userId, placeCreator)
+  return userId === String(placeCreator)
+})
+
 app.use((req, res, next) => {
   app.locals.currentUser = req.session.currentUser;
   next();

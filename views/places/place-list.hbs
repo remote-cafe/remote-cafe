@@ -1,19 +1,47 @@
-<h1>Places in our DB:</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-12 mb-3 mb-lg-5">
+      <div class="overflow-hidden card table-nowrap table-card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Best places to work remotely</h5>
+        </div>
+        <div class="table-responsive">
+          <table class="table mb-0">
+            <thead class="small text-uppercase bg-body text-muted">
+              <tr>
+                <th>Name</th>
+                <th>Country</th>
+                <th>City</th>
+                <th class="text-end">Action</th>
+              </tr>
+            </thead>
+            {{#each places}}
 
-{{#each places}}
-  <section class="place-summary">
-    <h2>{{this.title}}</h2>
 
-      <br />
-      Review:
-      {{this.review}}
-      <br />
-      <a href="/places/{{this._id}}">More details</a>
-      <a class="edit-btn" href="/places/{{_id}}/edit">Edit</a>
-      <form action="/places/{{_id}}/delete" method="POST">
-        <button>Delete</button>
-      </form>
-    </p>
 
-  </section>
-{{/each}}
+            <tbody>
+              <tr class="align-middle">
+                <td>
+                  <div class="d-flex align-items-center">
+                    <div>
+                      <div class="h6 mb-0 lh-1">{{this.name}}</div>
+                    </div>
+                  </div>
+                </td>
+                <td>{{address.country}}</td>
+                <td> <span class="d-inline-block align-middle">{{address.city}}</span></td>
+                <td class="text-end">
+                  <a class="btn btn-secondary" href="/places/{{this.id}}" role="button">More details</a>
+        </div>
+      </div>
+      </td>
+      </tr>
+
+      {{/each}}
+      </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+</div>

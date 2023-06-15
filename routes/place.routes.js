@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
+const mongoose = require("mongoose")
 const Place = require("../models/Place.model");
 
 const isLoggedIn = require("../middleware/isLoggedIn");
@@ -28,14 +28,24 @@ router.get("/places/create", isLoggedIn, (req, res, next) => {
 });
 //CREATE: process form
 router.post("/places/create", isLoggedIn, (req, res, next) => {
+  
   const newPlace = {
-    title: req.body.title,
-    description: req.body.description,
-    address: req.body.address,
-    review: req.body.review,
+    name: req.body.name,
+    address: {
+      country: req.body.country,
+      city: req.body.city,
+      street: req.body.street,
+    },
+    // postalCode: req.body.postalCode,
+    review: {
+      score: req.body.score,
+      comment: req.body.comment,
+    }
   };
-  Place.create(newPlace)
-    .then((newPlace) => {
+
+  Place.create({...newPlace, creator: req.session.currentUser._id})
+    .then((createdPlace) => {
+      console.log("CREATED PLACE", createdPlace);
       res.redirect("/places");
     })
     .catch((err) => {
@@ -83,10 +93,10 @@ router.post("/places/:placeId/delete", isLoggedIn, (req, res, next) => {
 //READ: display details of one place
 router.get("/places/:placeId", (req, res, next) => {
   const id = req.params.placeId;
-
+  const user = req.session.currentUser
   Place.findById(id)
-    .then((placesFromDb) => {
-      res.render("places/place-details", placesFromDb);
+    .then((place) => {
+      res.render("places/place-details", {place: place, user: user});
     })
     .catch((err) => {
       console.log("error getting place details from DB", err);
