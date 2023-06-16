@@ -10,8 +10,9 @@ Remote-Office: Work anywhere, your way.
 **How to run**
 1. npm install ironlauncher
 2. on root of the file, create a .env file and inside of that, write 
-```PORT=3000
-SESSION_SECRET='writesomething'```
+```PORT=3000```
+```SESSION_SECRET='writesomething'```
+
 3. npm run dev
 
 **Demo**
