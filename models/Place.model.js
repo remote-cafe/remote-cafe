@@ -1,4 +1,4 @@
-const { Schema, model, mongoose } = require("mongoose");
+const { mongoose,Schema, model } = require("mongoose");
 
 // TODO: Please make sure you edit the User model to whatever makes sense in this case
 const placeSchema = new Schema(
